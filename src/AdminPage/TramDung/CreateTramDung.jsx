@@ -9,6 +9,7 @@ const CreateTramDung = () => {
   const [DiaChi, setDiaChi] = useState("");
   const [GiaTienVe, setGiaTienVe] = useState("");
   const [SoKM, setSoKM] = useState("");
+  const [GiaTienVeTau, setGiaTienVeTrain] = useState("");
   const [tuyenList, setTuyenList] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -36,27 +37,25 @@ const CreateTramDung = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!MaTuyen || !DiaChi || !GiaTienVe || !SoKM) {
+    if (!MaTuyen || !DiaChi || !GiaTienVe || !SoKM || !GiaTienVeTau) {
       alert("Vui lòng nhập đầy đủ thông tin.");
       return;
     }
 
     try {
-      const res = await fetch(
-        "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/CreateTramDung",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            MaTuyen,
-            DiaChi,
-            GiaTienVe: parseFloat(GiaTienVe),
-            SoKM: parseFloat(SoKM),
-          }),
-        }
-      );
+      const res = await fetch("http://localhost:3000/api/CreateTramDung", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          MaTuyen,
+          DiaChi,
+          GiaTienVe: parseFloat(GiaTienVe),
+          SoKM: parseFloat(SoKM),
+          GiaTienVeTau: parseFloat(GiaTienVeTau),
+        }),
+      });
 
       const data = await res.json();
 
@@ -66,6 +65,7 @@ const CreateTramDung = () => {
         setDiaChi("");
         setGiaTienVe("");
         setSoKM("");
+        setGiaTienVeTrain("");
         navigate("/DanhSachTramDung");
       } else {
         alert(`Thêm thất bại: ${data.message}`);
@@ -134,6 +134,16 @@ const CreateTramDung = () => {
         </div>
 
         <div className="mb-4">
+          <label className="block text-black mb-2">Giá Tiền Vé tàu</label>
+          <input
+            type="number"
+            value={GiaTienVeTau}
+            onChange={(e) => setGiaTienVeTrain(e.target.value)}
+            className="w-full bg-slate-100 border-black rounded-lg p-2"
+          />
+        </div>
+
+        <div className="mb-4">
           <label className="block text-black mb-2">Số KM</label>
           <input
             type="number"
@@ -146,7 +156,7 @@ const CreateTramDung = () => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-blue-500 px-4 py-2 hover:bg-blue-700 text-white font-bold rounded"
+            className="bg-blue-500 px-4 h-fit py-2 mt-4 hover:bg-blue-700 text-white font-bold rounded"
           >
             Thêm Trạm Dừng
           </button>

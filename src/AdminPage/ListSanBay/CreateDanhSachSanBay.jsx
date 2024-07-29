@@ -29,12 +29,9 @@ const CreateDanhSachSanBay = () => {
 
       const data = await res.json();
 
-      if (res.status === 200) {
+      if (res.status === 200 || res.status === 201) {
         alert("Thêm sân bay thành công");
         navigate("/");
-      } else {
-        console.error(data);
-        alert("Đã xảy ra lỗi khi thêm sân bay");
       }
     } catch (error) {
       console.error(error);
