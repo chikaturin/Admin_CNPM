@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlane } from "@fortawesome/free-solid-svg-icons";
+import { faPlane, faChartLine } from "@fortawesome/free-solid-svg-icons";
 import {
   faRoute,
   faBus,
@@ -20,6 +20,14 @@ const Nav = () => {
           <li>
             <a
               href="/"
+              className="route text-white text-xl font-extrabold hover:text-black"
+            >
+              <FontAwesomeIcon icon={faChartLine} /> DashBoard
+            </a>
+          </li>
+          <li className="pt-6">
+            <a
+              href="/DanhSachSanBay"
               className="route text-white text-xl font-extrabold hover:text-black"
             >
               <FontAwesomeIcon icon={faPlane} /> Danh sách sân bay
