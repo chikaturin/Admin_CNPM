@@ -12,8 +12,8 @@ import ListDetailCar from "../AdminPage/DetailCar/ListDetailCar.jsx";
 import CreateDetailCar from "../AdminPage/DetailCar/CreateDetailCar.jsx";
 import GetDetailCar from "../AdminPage/DetailCar/GetDetailCar.jsx";
 import EditDetailCar from "../AdminPage/DetailCar/UpdateDetail.jsx";
-import Dashboard from "../AdminPage/DashBoard.jsx";
 import ErrorPage from "./ErrorPage.jsx";
+import {Dashboard} from "../AdminPage/DashBoard/DashBoard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Dashboard />,
+        element: <Dashboard/>,
       },
       {
         path: "CreateDanhSachSanBay",

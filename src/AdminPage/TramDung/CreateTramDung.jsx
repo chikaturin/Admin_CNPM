@@ -43,7 +43,7 @@ const CreateTramDung = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/CreateTramDung", {
+      const res = await fetch("https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/CreateTramDung", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
