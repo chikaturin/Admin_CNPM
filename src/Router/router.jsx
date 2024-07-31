@@ -13,6 +13,7 @@ import CreateDetailCar from "../AdminPage/DetailCar/CreateDetailCar.jsx";
 import GetDetailCar from "../AdminPage/DetailCar/GetDetailCar.jsx";
 import EditDetailCar from "../AdminPage/DetailCar/UpdateDetail.jsx";
 import ErrorPage from "./ErrorPage.jsx";
+import {Dashboard} from "../AdminPage/DashBoard/DashBoard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <DanhSachSanBay />,
+        element: <Dashboard/>,
       },
       {
         path: "CreateDanhSachSanBay",
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: `EditDetailCar/:id`,
         element: <EditDetailCar />,
+      },
+      {
+        path: "DanhSachSanBay",
+        element: <DanhSachSanBay />,
       },
     ],
   },

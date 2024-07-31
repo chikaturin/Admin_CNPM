@@ -50,8 +50,7 @@ const CreateTuyenXe = () => {
     if (
       !tuyenxe.DiemSanBay ||
       !tuyenxe.DiemKetThuc ||
-      !tuyenxe.ThoiGianKhoiHanh ||
-      !tuyenxe.ThoiGianKetThuc
+      !tuyenxe.ThoiGianKhoiHanh
     ) {
       alert("Vui lòng nhập đầy đủ thông tin");
       return;
@@ -78,10 +77,12 @@ const CreateTuyenXe = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            DiemSanBay: tuyenxe.DiemSanBay, // Gửi tên sân bay
-            DiemKetThuc: tuyenxe.DiemKetThuc, // Gửi tên sân bay
+            DiemSanBay: tuyenxe.DiemSanBay,
+            DiemKetThuc: tuyenxe.DiemKetThuc,
             ThoiGianKhoiHanh: thoiGianKhoiHanh.toISOString(),
-            ThoiGianKetThuc: thoiGianKetThuc.toISOString(),
+            ThoiGianKetThuc: new Date(
+              thoiGianKhoiHanh.getTime() + 1 * 60 * 60 * 1000
+            ),
           }),
         }
       );
@@ -93,7 +94,7 @@ const CreateTuyenXe = () => {
         navigate("/DanhSachTuyenXe");
       } else {
         console.error(data);
-        alert("Đã xảy ra lỗi khi thêm tuyến xe");
+        alert("Điểm kết thúc đã tồn tại vui lòng nhập điểm mới");
       }
     } catch (error) {
       console.error(error);
@@ -157,23 +158,12 @@ const CreateTuyenXe = () => {
             onChange={handleChange}
             className="w-full mt-2 bg-slate-100 border-black rounded-lg p-2"
           />
-
-          <label className="text-black pb-4">Thời gian kết thúc</label>
-          <input
-            type="time"
-            name="ThoiGianKetThuc"
-            value={tuyenxe.ThoiGianKetThuc}
-            onChange={handleChange}
-            className="w-full mt-2 bg-slate-100 border-black rounded-lg p-2"
-          />
-
           <div className="flex justify-center">
             <button
               disabled={
                 !tuyenxe.DiemSanBay ||
                 !tuyenxe.DiemKetThuc ||
-                !tuyenxe.ThoiGianKhoiHanh ||
-                !tuyenxe.ThoiGianKetThuc
+                !tuyenxe.ThoiGianKhoiHanh
               }
               onClick={handleSubmit}
               className="bg-blue-500 px-4 py-2 mt-4 w-fit h-fit hover:bg-blue-700 text-white font-bold rounded"

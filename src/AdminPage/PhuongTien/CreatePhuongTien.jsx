@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const CreatePhuongTien = () => {
@@ -10,6 +9,8 @@ const CreatePhuongTien = () => {
     MaLoai: true, // true for bus, false for train
     TenPhuongTien: "",
     SoGheToiDa: "",
+    image: "",
+    TenCty: "",
   });
   const [tuyenXes, setTuyenXes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -59,7 +60,9 @@ const CreatePhuongTien = () => {
       !phuongtien.MaTuyen ||
       phuongtien.MaLoai === null ||
       !phuongtien.TenPhuongTien ||
-      !phuongtien.SoGheToiDa
+      !phuongtien.SoGheToiDa ||
+      !phuongtien.image ||
+      !phuongtien.TenCty
     ) {
       alert("Vui lòng nhập đầy đủ thông tin");
       return;
@@ -72,12 +75,7 @@ const CreatePhuongTien = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            MaTuyen: phuongtien.MaTuyen,
-            MaLoai: phuongtien.MaLoai,
-            TenPhuongTien: phuongtien.TenPhuongTien,
-            SoGheToiDa: phuongtien.SoGheToiDa,
-          }),
+          body: JSON.stringify(phuongtien),
         }
       );
 
@@ -124,15 +122,11 @@ const CreatePhuongTien = () => {
             className="w-full mt-2 bg-slate-100 border-black rounded-lg p-2"
           >
             <option value="">Chọn Mã tuyến</option>
-            {isLoading ? (
-              <option>Loading...</option>
-            ) : (
-              tuyenXes.map((tuyenXe) => (
-                <option key={tuyenXe._id} value={tuyenXe.MaTuyen}>
-                  {tuyenXe.MaTuyen}
-                </option>
-              ))
-            )}
+            {tuyenXes.map((tuyenXe) => (
+              <option key={tuyenXe._id} value={tuyenXe.MaTuyen}>
+                {tuyenXe.MaTuyen}
+              </option>
+            ))}
           </select>
 
           <label className="text-black pb-4">Mã loại</label>
@@ -161,20 +155,38 @@ const CreatePhuongTien = () => {
             className="w-full mt-2 bg-slate-100 border-black rounded-lg p-2"
           />
 
+          <label className="text-black pb-4">Ảnh</label>
+          <input
+            type="text"
+            name="image"
+            value={phuongtien.image}
+            onChange={handleChange}
+            className="w-full mt-2 bg-slate-100 border-black rounded-lg p-2"
+          />
+          <label className="text-black pb-4">Tên Công Ty</label>
+          <input
+            type="text"
+            name="TenCty"
+            value={phuongtien.TenCty}
+            onChange={handleChange}
+            className="w-full mt-2 bg-slate-100 border-black rounded-lg p-2"
+          />
           <div className="flex justify-center">
             <button
               disabled={
                 !phuongtien.MaTuyen ||
                 phuongtien.MaLoai === null ||
                 !phuongtien.TenPhuongTien ||
-                !phuongtien.SoGheToiDa
+                !phuongtien.SoGheToiDa ||
+                !phuongtien.image ||
+                !phuongtien.TenCty
               }
               onClick={handleSubmit}
               className="bg-blue-500 px-4 py-2 mt-4 w-fit h-fit hover:bg-blue-700 text-white font-bold rounded"
             >
               Thêm phương tiện
             </button>
-            <Link className="px-4 py-4" to={`/PhuongTien`}>
+            <Link className="px-4 py-4" to="/PhuongTien">
               <button className="bg-red-500 px-4 py-2 hover:bg-red-700 text-white font-bold rounded">
                 <FontAwesomeIcon icon={faXmark} /> Cancel
               </button>
