@@ -10,7 +10,7 @@ const DanhSachPhuongTien = () => {
   const fetchPhuongTien = async () => {
     try {
       const res = await fetch(
-        "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/GetPhuongTien"
+        "https://cnpm-server.vercel.app/api/GetPhuongTien"
       );
       if (!res.ok) {
         throw new Error("Network response was not ok");
@@ -31,7 +31,7 @@ const DanhSachPhuongTien = () => {
   const handleDeletePhuongTien = async (_id) => {
     try {
       const res = await fetch(
-        `https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/DeletePhuongTien/${_id}`, // Cập nhật URL nếu cần
+        `https://cnpm-server.vercel.app/api/DeletePhuongTien/${_id}`, // Cập nhật URL nếu cần
         {
           method: "DELETE",
         }

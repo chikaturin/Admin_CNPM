@@ -20,9 +20,7 @@ const DanhSachTuyenXe = () => {
 
   const fetchTuyenXe = async () => {
     try {
-      const res = await fetch(
-        "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/GetTuyen"
-      );
+      const res = await fetch("https://cnpm-server.vercel.app/api/GetTuyen");
       if (!res.ok) {
         throw new Error("Network response was not ok");
       }
@@ -42,7 +40,7 @@ const DanhSachTuyenXe = () => {
   const handleDeleteTuyenXe = async (_id) => {
     try {
       const res = await fetch(
-        `https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/DeleteTuyen/${_id}`,
+        `https://cnpm-server.vercel.app/api/DeleteTuyen/${_id}`,
         {
           method: "DELETE",
         }

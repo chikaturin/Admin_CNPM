@@ -23,7 +23,7 @@ const CreateTuyenXe = () => {
     error: fetchError,
     isLoading: fetchLoading,
   } = UseFetch(
-    "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/GetDanhSachSanBay",
+    "https://cnpm-server.vercel.app/api/GetDanhSachSanBay",
     "danhSachSanBay"
   );
 
@@ -70,7 +70,7 @@ const CreateTuyenXe = () => {
 
     try {
       const res = await fetch(
-        "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/CreateTuyen",
+        "https://cnpm-server.vercel.app/api/CreateTuyen",
         {
           method: "POST",
           headers: {

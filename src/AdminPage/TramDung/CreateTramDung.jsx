@@ -18,9 +18,7 @@ const CreateTramDung = () => {
   useEffect(() => {
     const fetchTuyen = async () => {
       try {
-        const res = await fetch(
-          "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/GetTuyen"
-        );
+        const res = await fetch("https://cnpm-server.vercel.app/api/GetTuyen");
         if (!res.ok) throw new Error("Network response was not ok");
         const result = await res.json();
         setTuyenList(result.tuyen || []);
@@ -43,19 +41,22 @@ const CreateTramDung = () => {
     }
 
     try {
-      const res = await fetch("https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/CreateTramDung", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          MaTuyen,
-          DiaChi,
-          GiaTienVe: parseFloat(GiaTienVe),
-          SoKM: parseFloat(SoKM),
-          GiaTienVeTau: parseFloat(GiaTienVeTau),
-        }),
-      });
+      const res = await fetch(
+        "https://cnpm-server.vercel.app/api/CreateTramDung",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            MaTuyen,
+            DiaChi,
+            GiaTienVe: parseFloat(GiaTienVe),
+            SoKM: parseFloat(SoKM),
+            GiaTienVeTau: parseFloat(GiaTienVeTau),
+          }),
+        }
+      );
 
       const data = await res.json();
 

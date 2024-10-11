@@ -27,7 +27,7 @@ const CreateDetailCar = () => {
     error: fetchError,
     isLoading: fetchLoading,
   } = UseFetch(
-    "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/GetDanhSachSanBay",
+    "https://cnpm-server.vercel.app/api/GetDanhSachSanBay",
     "danhSachSanBay"
   );
 
@@ -59,7 +59,7 @@ const CreateDetailCar = () => {
 
     try {
       const res = await fetch(
-        "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/CreateDetailCar",
+        "https://cnpm-server.vercel.app/api/CreateDetailCar",
         {
           method: "POST",
           headers: {

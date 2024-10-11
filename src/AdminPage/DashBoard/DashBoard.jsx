@@ -4,7 +4,7 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { ChartBookingCar } from "./ChartBookingCar";
 
 export const Dashboard = () => {
-  const url = "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api";
+  const url = "http://localhost:3005/api";
   const [isLoading, setIsLoading] = useState(true);
   const [slCar, setSlCar] = useState([]);
   const [slTrain, setSlTrain] = useState([]);

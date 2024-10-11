@@ -9,9 +9,7 @@ const DanhSachTramDung = () => {
 
   const fetchTramDung = async () => {
     try {
-      const res = await fetch(
-        "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/GetTramDung"
-      );
+      const res = await fetch("https://cnpm-server.vercel.app/api/GetTramDung");
       if (!res.ok) {
         throw new Error("Network response was not ok");
       }
@@ -31,7 +29,7 @@ const DanhSachTramDung = () => {
   const handleDeleteTramDung = async (_id) => {
     try {
       const res = await fetch(
-        `https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/DeleteTramDung/${_id}`,
+        `https://cnpm-server.vercel.app/api/DeleteTramDung/${_id}`,
         {
           method: "DELETE",
         }

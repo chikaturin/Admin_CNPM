@@ -17,7 +17,7 @@ const CreateDanhSachSanBay = () => {
 
     try {
       const res = await fetch(
-        "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/CreateDanhSachSanBay",
+        "https://cnpm-server.vercel.app/api/CreateDanhSachSanBay",
         {
           method: "POST",
           headers: {

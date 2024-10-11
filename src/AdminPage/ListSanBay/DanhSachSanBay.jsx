@@ -9,14 +9,14 @@ const DanhSachSanBay = () => {
     error,
     isLoading,
   } = UseFetch(
-    "https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/GetDanhSachSanBay",
+    "https://cnpm-server.vercel.app/api/GetDanhSachSanBay",
     "danhSachSanBay"
   );
 
   const handleDeleteSanBay = async (_id) => {
     try {
       const res = await fetch(
-        `https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/DeleteDanhSachSanBay/${_id}`,
+        `https://cnpm-server.vercel.app/api/DeleteDanhSachSanBay/${_id}`,
         {
           method: "DELETE",
         }

@@ -13,7 +13,7 @@ const ListDetailCar = () => {
   const fetchDetailCar = async () => {
     try {
       const res = await fetch(
-        `https://cnpm-api-thanh-3cf82c42b226.herokuapp.com/api/GetDetailCarID/${id}`
+        `https://cnpm-server.vercel.app/api/GetDetailCarID/${id}`
       );
       if (!res.ok) {
         throw new Error("Network response was not ok");
